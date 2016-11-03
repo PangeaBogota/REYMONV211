@@ -537,7 +537,7 @@ app_angular.controller('sessionController',['bootbox','Conexion','$scope','$loca
             })
         }) 
     }
-    CRUD.Updatedynamic("update s_planos_pedidos set estado=0 ");
+    //CRUD.Updatedynamic("update s_planos_pedidos set estado=0 ");
     //CRUD.Updatedynamic("update t_pedidos set estado_sincronizacion=0,sincronizado='false' where rowid=10063");
     //$scope.build();
     $scope.sincronizar=function(){
