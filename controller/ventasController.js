@@ -395,9 +395,11 @@ app_angular.controller("pedidoController",['Conexion','$scope','$location','$htt
 	$scope.onChangeComboItem=function(){
 		$scope.itemDisabled=true;
 		$scope.tallas=[];
+		debugger
 		CRUD.select("select distinct  e.itemID,item.item_referencia,e.extencionDetalle1ID as talla,0 as cantidad,0  as multiplo,ext1_d.erp_descripcion_corta,sum(e.stock) as stock from erp_items_extenciones  e inner join erp_items item on item.rowid=e.itemID inner join  erp_item_extencion1_detalle ext1_d on ext1_d.rowid_erp=e.extencionDetalle1ID where e.itemID='"+$scope.item.rowid_item+"'  group by e.itemID,item.item_referencia,e.extencionDetalle1ID,ext1_d.erp_descripcion_corta order by ext1_d.erp_descripcion_corta ",function(elem){
 			//estado 0 inicia sin colores
 			elem.estadoextension2=0;
+
 			elem.detalle2=[];
 			$scope.validaciones=true;
 			if ($scope.bandera.banderaEditar==true) {
@@ -415,8 +417,12 @@ app_angular.controller("pedidoController",['Conexion','$scope','$location','$htt
 			
 			$scope.tallas.push(elem);
 			$scope.calcularTotalCantidad();
-			$scope.itemDisabled=false;
+			
 		})
+		setTimeout(function() {
+			debugger
+			$scope.itemDisabled=false;
+		}, 2000);
 	}
 	$scope.cantidadRestanteDetalle2=function(cantidad){
 		$scope.contadorCantidades=0;
